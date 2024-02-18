@@ -17,7 +17,11 @@ PA2 = pin 24
 PA3 = pin 25
 */
 void initLED(){
-  
+//this set the LEDs as outputs
+  DDRA |= (1 << DDA0);
+  DDRA |= (1 << DDA1);
+  DDRA |= (1 << DDA2);
+  DDRA |= (1 << DDA3);
 }
 
 /* This must be one line of code.
@@ -26,7 +30,6 @@ void initLED(){
 * "num" to the appropriate bits of PORTA.
 */
 
-//thats a tall order but Ill try my best (its been a hot minute since I've done this)
 void turnOnLEDWithChar(unsigned char num){
-  
+  PORTA = (PORTA & 0x0F) | (num & 0x0F);
 }
