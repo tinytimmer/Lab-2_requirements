@@ -23,8 +23,7 @@
 
   typedef enum stateType_enum{
     wait_press, button_press, wait_release, button_release
-  }
-  stateType;
+  }  stateType;
 
   //next well make some volatile variables below
   volatile stateType state = wait_press;
@@ -45,17 +44,16 @@ int main(){
     initTimer0();
     initLED();
 
-    //will enble global interrupts
-    sei();
 
 /*
   * Implement a state machine in the while loop which achieves the assignment
   * requirements.
   */
+ delayMs(100/multiplier);
 	while (1) {
-    //after 100ms code needs to incremnet the binary number which is represented by LEDs
+    //after 100ms code needs to increment the binary number which is represented by LEDs
     //here is the delay
-    delayMs(100 / multiplier);
+    delayMs(100/multiplier);
     counter++;
 
     //then here is where we turn on the led
@@ -68,16 +66,16 @@ int main(){
       break;
 
     case button_press:
-      Serial.println("button pressed");
+      //Serial.println("button pressed");
       state = wait_release;
       break;
 
     case wait_release:
-      Serial.println("wait release");
+      //Serial.println("wait release");
       break;
     
     case button_release:
-      Serial.println("button release");
+      //Serial.println("button release");
       Serial.println(multiplier);
       if (multiplier == NORMAL_SPEED)
       {
@@ -103,7 +101,7 @@ int main(){
 * the original rate, it goes back to the original rate.
 */
 ISR(PCINT0_vect){
-  Serial.println("switch has been HIT");
+  //Serial.println("switch has been HIT");
   if (state == wait_press)
   {
     state = button_press;

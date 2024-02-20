@@ -31,5 +31,5 @@ void initLED(){
 */
 
 void turnOnLEDWithChar(unsigned char num){
-  PORTA = (PORTA & 0x0F) | (num & 0x0F);
+  PORTA = (PORTA & 0xF0) | (num & 0x0F);
 }

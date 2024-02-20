@@ -14,14 +14,16 @@ void initTimer0(){
     TCCR0A &= ~(1 << WGM02);
 
     //set the bits for prescalar
+    //TCCR0B |= (1 << CS02)|(1 << CS01)|(1 << CS00);
+
     TCCR0B |= (1 << CS00);
     TCCR0B &= ~(1 << CS01);
-    TCCR0B |= (1 << CS02);
+    TCCR0B |= (1 << CS02); 
 
     //CTC compare value
     OCR0A = 156;
     
-    //finally we'll initilize counter
+     //initilize counter
     TCNT0 = 0;
 
 }
@@ -34,7 +36,7 @@ void initTimer0(){
 void delayMs(unsigned int delay){
     int timer_count = 0;
     int prescalar = 64;
-
+    
     timer_count = ((delay * 0.001) * (16000000 / prescalar)) - 1;
     Serial.println(timer_count);
     OCR0A = timer_count;
