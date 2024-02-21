@@ -43,6 +43,7 @@ int main(){
     initSwitchPB3();
     initTimer0();
     initLED();
+    sei(); // enable global interrupts, after putting this in it recognized my switch/button input Idk how or why but it works!
 
 
 /*
