@@ -54,7 +54,7 @@ int main(){
     //after 100ms code needs to increment the binary number which is represented by LEDs
     //here is the delay
     delayMs(100/multiplier);
-    counter++;
+    //counter++;
 
     //then here is where we turn on the led
     turnOnLEDWithChar(counter);
@@ -91,9 +91,19 @@ int main(){
       break;
 
     }
+
+    //This is the upper limit for the counter
+    if (counter == 15)
+    {
+      counter = 0;
+    }
+    counter++;
+    
 	}
   return 0;
 }
+
+
 
 /* Implement an Pin Change Interrupt which handles the switch being
 * pressed and released. When the switch is pressed and released, the LEDs
